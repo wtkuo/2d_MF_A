@@ -69,8 +69,8 @@ E,M = eig(H);
 
 
 
-
-
+# Construct the correlation function for each site including c-electron site and impurity site 
+# Here, i set up the half-filled case. Thus, the second loop is only summed to n (roughly equal to N/2)
 
 for i = 1:N
     for j = 1:n
@@ -80,9 +80,11 @@ end
 
 for i = 1:N-1
     for j = i+1:N
-        for k = 1:n
-            C[i,j] += M[i,k]* M[j,k];
-        end
+            
+            for k = 1:n
+                C[i,j] += M[i,k]* M[j,k];
+            end
+        
         C[j,i] = C[i,j];
     end
 end
