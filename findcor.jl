@@ -1,21 +1,23 @@
 # C is the original correlation function
-# C_red is the reduced correlation function which would be created in this subroutine
+# C_red is the correlation function for reduced region
+# C_con is the correlation function for conduction electrons
 # l is the length of the side in the original lattice
 # n is the number of conduction electron site
 # k is the index number for the range we are calculating
+# size is the number of sites for conduction electrons
 
 
 function findcor(C,C_red,C_con,l,n,k,size)
 
-    len = Int(sqrt(size));               # the length of each side in kth iteration
+    len = Int(sqrt(size));  # the length of each side in kth iteration
     center = (n+1)/2;       # center coordinate 
-    N = 2*size+2;
-    v = zeros(N);    # this v vector stores the index of the sites which we need for the kth iteration
+    N = 2*size+2;           # the dimension for correlation function for reduced region
+    v = zeros(N);        # this v vector stores the index of the sites which we need for the kth iteration
                             
-    v[N-1] = 2*n+1;      # This is spin up impurity site 
-    v[N] = 2*n+2;      # This is spin down impurity site 
+    v[N-1] = 2*n+1;             # This is spin up impurity site 
+    v[N] = 2*n+2;               # This is spin down impurity site 
     
-    v[1] = c-(k-1)*l-(k-1); # This is the left-bottom site for this kth iteration
+    v[1] = c-(k-1)*l-(k-1);     # This is the left-bottom site for this kth iteration
    
 # I set up for spin up condution sites first
 
@@ -32,7 +34,6 @@ function findcor(C,C_red,C_con,l,n,k,size)
     end
 
 # Happily construct the reduced density matrix
-
 
 
     for i = 1:N
