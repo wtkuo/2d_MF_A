@@ -8,6 +8,9 @@ function eecal(C)
     eva_C = eigvals(C);
     
     for i = 1:d
+            
+# This if is to avoid some numerical errors. 
+    
             if eva_C[i] > 0.999 || eva_C[i]  < 0.001
                 eva_C[i] = 0.000000000000000000000001
             end
