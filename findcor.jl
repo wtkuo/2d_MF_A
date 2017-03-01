@@ -5,9 +5,8 @@
 # k is the index number for the range we are calculating
 
 
-function findcor(C,C_red,l,n,k)
+function findcor(C,C_red,C_con,l,n,k,size)
 
-    size = Int((2k-1)*(2k-1));      # the number of sites in kth iteration
     len = sqrt(size);               # the length of each side in kth iteration
     center = (n+1)/2;       # center coordinate 
     v = zeros(2*size+2);    # this v vector stores the index of the sites which we need for the kth iteration
@@ -35,6 +34,11 @@ function findcor(C,C_red,l,n,k)
 
     for i = 1:2*size+2
         for j = 1:2*size+2 
+
+            if i < 2*size+1 && j < 2*size+1
+                C_con[i,j] = C[v[i],v[j]];
+            end
+            
             C_red[i,j] = C[v[i],v[j]];
         end
     end
