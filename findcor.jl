@@ -7,12 +7,13 @@
 
 function findcor(C,C_red,C_con,l,n,k,size)
 
-    len = sqrt(size);               # the length of each side in kth iteration
+    len = Int(sqrt(size));               # the length of each side in kth iteration
     center = (n+1)/2;       # center coordinate 
-    v = zeros(2*size+2);    # this v vector stores the index of the sites which we need for the kth iteration
+    N = 2*size+2;
+    v = zeros(N);    # this v vector stores the index of the sites which we need for the kth iteration
                             
-    v[size+1] = 2*n+1;      # This is spin up impurity site 
-    v[size+2] = 2*n+2;      # This is spin down impurity site 
+    v[N-1] = 2*n+1;      # This is spin up impurity site 
+    v[N] = 2*n+2;      # This is spin down impurity site 
     
     v[1] = c-(k-1)*l-(k-1); # This is the left-bottom site for this kth iteration
    
@@ -32,15 +33,18 @@ function findcor(C,C_red,C_con,l,n,k,size)
 
 # Happily construct the reduced density matrix
 
-    for i = 1:2*size+2
-        for j = 1:2*size+2 
 
-            if i < 2*size+1 && j < 2*size+1
-                C_con[i,j] = C[v[i],v[j]];
+
+    for i = 1:N
+        for j = 1:N
+
+            if i < N-1 && j < N-1
+ 
+                C_con[i,j] = C[Int(v[i]),Int(v[j])];
             end
-            
-            C_red[i,j] = C[v[i],v[j]];
+        
+            C_red[i,j] = C[Int(v[i]),Int(v[j])];
         end
-    end
-           
+    end    
 end
+
