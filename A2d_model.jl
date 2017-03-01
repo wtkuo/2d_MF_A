@@ -1,6 +1,9 @@
 # This script is to generate a 2D single impurity Anderson model on a square lattice
 # To simplify, the possible transition between c-electron and f-electron happens at the center of the lattice (only one site) and the impurity site with transition amplitude V.
 
+include("eecal.jl");
+include("find.cor.jl");
+
 
 n = 9;      # the number of conduction electon sites (WARNING: this number should be the square of ODD number.)
 N = 2*(n+1);     # the size of the full Hamiltonian (n c.sites + 1 f.site) x 2 (spin up and spin down)
@@ -88,6 +91,8 @@ for i = 1:N-1
         C[j,i] = C[i,j];
     end
 end
+
+
 
 
 
