@@ -4,7 +4,7 @@
 # l is the length of the side in the original lattice
 # n is the number of conduction electron site
 # k is the index number for the range we are calculating
-# size is the number of sites for conduction electrons
+# size is the number of sites in the kth iteration
 
 
 function findcor(C,C_red,C_con,l,n,k,size)
