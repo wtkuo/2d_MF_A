@@ -9,11 +9,11 @@
 function findcorT(C,C_red,C_con,l,n,k,size)
 
     len = Int(sqrt(size));  # the length of each side in kth iteration
-    center = (n+1)/2;       # center coordinate 
+    a = (n+1)/2;       # center coordinate 
     N = 2*size;             # the total elimanated DOF 
     v = zeros(N);        # this v vector stores the index of the sites which we need for the kth iteration
     RN = 2*n+2;        # the dimension for correlation function for reduced region                           
-    v[1] = c-(k-1)*l-(k-1);     # This is the left-bottom site for this kth iteration
+    v[1] = a-(k-1)*l-(k-1);     # This is the left-bottom site for this kth iteration
 
 # I set up for spin up condution sites first
 

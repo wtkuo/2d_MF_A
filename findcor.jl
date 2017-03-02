@@ -10,15 +10,16 @@
 function findcor(C,C_red,C_con,l,n,k,size)
 
     len = Int(sqrt(size));  # the length of each side in kth iteration
-    center = (n+1)/2;       # center coordinate 
+    a = (n+1)/2;       # center coordinate 
     N = 2*size+2;           # the dimension for correlation function for reduced region
     v = zeros(N);        # this v vector stores the index of the sites which we need for the kth iteration
                             
     v[N-1] = 2*n+1;             # This is spin up impurity site 
     v[N] = 2*n+2;               # This is spin down impurity site 
     
-    v[1] = c-(k-1)*l-(k-1);     # This is the left-bottom site for this kth iteration
-   
+    v[1] = a-(k-1)*l-(k-1);     # This is the left-bottom site for this kth iteration
+
+
 # I set up for spin up condution sites first
 
     for j = 0:len-1
@@ -41,7 +42,7 @@ function findcor(C,C_red,C_con,l,n,k,size)
 
             if i < N-1 && j < N-1
  
-                C_con[i,j] = C[Int(v[i]),Int(v[j])];
+               C_con[i,j] = C[Int(v[i]),Int(v[j])];
             end
         
             C_red[i,j] = C[Int(v[i]),Int(v[j])];
