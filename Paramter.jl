@@ -37,22 +37,21 @@ S_im = eecal(C_im);
 
 # Calculate the Mutual Information 
 
-for i = 2:iter
+for i = 1:iter
     
-    size = Int((2*i-3)*(2*i-3));
+    size = Int((2*i-1)*(2*i-1));
     Dim = Int(2*size+2);
     dim = Int(2*size+2);
     C_red = zeros(Dim,Dim);    
     C_con = zeros(dim,dim);
     S_total = 0;
     S_con = 0;
-    findcor(C,C_red,C_con,l,n,i,size);
+    findcor(C,C_red,C_con,n,i,size);
     S_con = eecal(C_con);
     S_total = eecal(C_red);    
     MI1[i] = S_con + S_im - S_total;
 
 end
 
-MI1[1] = 0;
 
 
