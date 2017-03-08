@@ -19,7 +19,7 @@ Ed = U-V*V;          # On-site energy for spin down electron at the impurity
 C = zeros(N,N);  # Correlation function matrix
 C_im = zeros(2,2); # Correlation function for impurity electron
 S_im = 0;          # EE for impurity 
-MI1 = zeros(iter+1); # Mutual information 
+MI1 = zeros(iter); # Mutual information 
 
 
 
@@ -121,13 +121,12 @@ for i = 1:iter
     C_con = zeros(dim,dim);
     S_total = 0;
     S_con = 0;
-    findcor(C,C_red,C_con,l,n,i,size);
+    findcor(C,C_red,C_con,n,i,size);
     S_con = eecal(C_con);
     S_total = eecal(C_red);    
-    MI1[i+1] = S_con + S_im - S_total;
+    MI1[i] = S_con + S_im - S_total;
 
 end
 
-MI1[1] = 0;
 
 
