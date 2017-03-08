@@ -38,8 +38,8 @@ end
 
 # This step is to set up the transition between the vertically neighboring sites
 
-for i = 1:n-len_side-1
-        
+for i = 1:n-len_side
+       
         # Spin up conduction electron
         H[i,i+len_side] = t;
         H[i+len_side,i] = t;
