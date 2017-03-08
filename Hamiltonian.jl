@@ -59,12 +59,12 @@ end
 
 # Set up the interaction between c-electron and f-electron only at the center of the lattice
 
-# find the central site 
-central = Int((1+n)/2);
+# find the center site 
+center = Int((1+n)/2);
 
-H[2n+1,central] = V;
-H[central,2n+1] = V;
-H[2n+2,central+n] = V;
-H[central+n,2n+2] = V;
+H[2n+1,center] = V;
+H[center,2n+1] = V;
+H[2n+2,center+n] = V;
+H[center+n,2n+2] = V;
 
 end
